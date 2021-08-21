@@ -1,0 +1,51 @@
+﻿  generate.cpp
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  gfxProject.cpp
+c:\users\m_hege\desktop\team9_pa3\source\gfxproject.cpp(576): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\gfxproject.cpp(983): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\gfxproject.cpp(1897): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdlib.h(1282): note: see declaration of '_sleep'
+c:\users\m_hege\desktop\team9_pa3\source\gfxproject.cpp(1922): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdlib.h(1282): note: see declaration of '_sleep'
+  letterDigitPair.cpp
+c:\users\m_hege\desktop\team9_pa3\source\letterdigitpair.cpp(182): warning C4101: 'groupMatrix': unreferenced local variable
+  world.cpp
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(153): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(155): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(177): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(282): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(282): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(284): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(284): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(260): warning C4101: 'roTemp': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(406): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(408): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(467): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(469): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(526): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(528): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(589): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(591): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(648): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(650): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(760): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(762): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(953): warning C4101: 'groupMatrix': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1060): warning C4101: 'groupMatrix': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1114): warning C4101: 'groupMatrix': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1245): warning C4101: 'groupMatrix': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1467): warning C4101: 'groupMatrix': unreferenced local variable
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1972): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1973): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1976): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+c:\users\m_hege\desktop\team9_pa3\source\world.cpp(1977): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+  Generating Code...
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(292): warning C4172: returning address of local variable or temporary: vaos
+c:\users\m_hege\desktop\team9_pa3\source\generate.cpp(374): warning C4172: returning address of local variable or temporary: vaos
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\m_hege\Desktop\Team9_PA3\Bin\vc120.pdb'; linking object as if no debug info
+  gfx.vcxproj -> C:\Users\m_hege\Desktop\Team9_PA3\VS2017\/../Bin/gfxProjectA1Team9-Debug.exe

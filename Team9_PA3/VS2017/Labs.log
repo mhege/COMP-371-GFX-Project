@@ -1,0 +1,10 @@
+﻿  gfxProject.cpp
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(559,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(895,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(1566,56): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(1567,54): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(1928,1): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message : see declaration of '_sleep'
+C:\Users\nalve\Desktop\Lab02\Lab_Framework\Source\gfxProject.cpp(1953,1): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdlib.h(1274): message : see declaration of '_sleep'
+  Labs.vcxproj -> C:\Users\nalve\Desktop\Lab02\Lab_Framework\VS2017\/../Bin/Labs-Debug.exe

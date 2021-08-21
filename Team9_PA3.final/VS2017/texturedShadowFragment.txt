@@ -1,0 +1,389 @@
+#version 330 core
+	out vec4 FragColor;
+    const float PI = 3.1415926535897932384626433832795;
+    in vec3 vertexColor;
+    in vec2 vertexUV;
+	in vec3 Normal;
+	in vec3 FragPos;
+    in vec4 fragment_position_light_space1;
+	in vec4 fragment_position_light_space2;
+	in vec4 fragment_position_light_space3;
+	in vec4 fragment_position_light_space4;
+	in vec4 fragment_position_light_space5;
+	in vec4 fragment_position_light_space6;
+    in vec3 fragment_normal;
+    
+     uniform sampler2D textureSampler;
+    uniform vec3 lightPos1;
+	uniform vec3 lightPos2;
+	uniform vec3 lightPos3;
+	uniform vec3 lightPos4;
+	uniform vec3 lightPos5;
+	uniform vec3 lightPos6;
+	
+	uniform vec3 lightColor;
+	uniform vec3 viewPos1;
+	uniform vec3 viewPos2;
+	uniform vec3 viewPos3;
+	uniform vec3 viewPos4;
+	uniform vec3 viewPos5;
+	uniform vec3 viewPos6;
+	
+    uniform vec3 light_direction1;
+	uniform vec3 light_direction2;
+	uniform vec3 light_direction3;
+	uniform vec3 light_direction4;
+	uniform vec3 light_direction5;
+	uniform vec3 light_direction6;
+	
+	uniform float light_near_plane;
+	uniform float light_far_plane;
+	
+	uniform float light_cutoff;
+	uniform int lightOff;
+	
+    uniform sampler2D shadow_map1;
+	uniform sampler2D shadow_map2;
+	uniform sampler2D shadow_map3;
+	uniform sampler2D shadow_map4;
+	uniform sampler2D shadow_map5;
+	uniform sampler2D shadow_map6;
+
+float shadow_scalar1() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space1.xyz / fragment_position_light_space1.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map1, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.000001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }
+
+float shadow_scalar2() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space2.xyz / fragment_position_light_space2.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map2, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.0001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }
+
+float shadow_scalar3() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space3.xyz / fragment_position_light_space3.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map3, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.0001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }
+	
+	float shadow_scalar4() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space4.xyz / fragment_position_light_space4.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map4, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.0001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }
+	
+	float shadow_scalar5() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space5.xyz / fragment_position_light_space5.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map5, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.0001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }
+	
+	float shadow_scalar6() {
+                
+    // this function returns 1.0 when the surface receives light, and 0.0 when it is in a shadow
+    // perform perspective divide
+    vec3 normalized_device_coordinates = fragment_position_light_space6.xyz / fragment_position_light_space6.w;
+    // transform to [0,1] range
+    normalized_device_coordinates = normalized_device_coordinates * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragment_position_light_space as coords)
+    float closest_depth = texture(shadow_map6, normalized_device_coordinates.xy).r;
+    // get depth of current fragment from light's perspective
+    float current_depth = normalized_device_coordinates.z;
+    // check whether current frag pos is in shadow
+    float bias = 0.0001;  // bias applied in depth map: see shadow_vertex.glsl
+    return ((current_depth - bias) < closest_depth) ? 1.0 : 0.0;
+     
+    }	
+	
+void main()
+    {
+		vec3 lightDir1 = normalize(lightPos1 - FragPos);
+		vec3 lightDir2 = normalize(lightPos2 - FragPos);
+		vec3 lightDir3 = normalize(lightPos3 - FragPos);
+		vec3 lightDir4 = normalize(lightPos4 - FragPos);
+		vec3 lightDir5 = normalize(lightPos5 - FragPos);
+		vec3 lightDir6 = normalize(lightPos6 - FragPos);
+		
+		float theta = dot(lightDir1, normalize(-light_direction1));
+		float theta2 = dot(lightDir2, normalize(-light_direction2));
+		float theta3 = dot(lightDir3, normalize(-light_direction3));
+		float theta4 = dot(lightDir4, normalize(-light_direction4));
+		float theta5 = dot(lightDir5, normalize(-light_direction5));
+		float theta6 = dot(lightDir6, normalize(-light_direction6));
+	
+        vec4 textureColor = texture( textureSampler, vertexUV );
+		float scalar1 = shadow_scalar1();	
+		float scalar2 = shadow_scalar2();
+		float scalar3 = shadow_scalar3();
+		float scalar4 = shadow_scalar4();
+		float scalar5 = shadow_scalar5();
+		float scalar6 = shadow_scalar6();
+
+	if(lightOff == 0){
+	if( ((theta > light_cutoff) && (theta2 > light_cutoff)) || ((theta > light_cutoff) && (theta3 > light_cutoff)) || ((theta > light_cutoff) && (theta4 > light_cutoff)) || ((theta > light_cutoff) && (theta5 > light_cutoff)) || ((theta > light_cutoff) && (theta6 > light_cutoff))) 
+    {     
+        //Ambient
+	    float ambientStrength = 0.25f;
+		vec3 ambient = ambientStrength * lightColor;
+			
+		//Diffuse1
+		vec3 norm = normalize(Normal);
+		float diff = max(dot(norm, lightDir1), 0.0);
+		vec3 diffuse =  .75*scalar1 * diff * lightColor;
+			
+		//Diffuse2
+		
+		float diff2 = max(dot(norm, lightDir2), 0.0);
+		vec3 diffuse2 =  .75*scalar2*diff2 * lightColor;
+			
+		//Diffuse3
+		
+		float diff3 = max(dot(norm, lightDir3), 0.0);
+		vec3 diffuse3 =  .75*scalar3*diff3 * lightColor;
+		
+		//Diffuse4
+		
+		float diff4 = max(dot(norm, lightDir4), 0.0);
+		vec3 diffuse4 =  .75*scalar4*diff4 * lightColor;
+		
+		//Diffuse5
+		
+		float diff5 = max(dot(norm, lightDir5), 0.0);
+		vec3 diffuse5 =  .75*scalar5*diff5 * lightColor;
+		
+		//Diffuse6
+		
+		float diff6 = max(dot(norm, lightDir6), 0.0);
+		vec3 diffuse6 =  .75*scalar6*diff6 * lightColor;
+		
+		//specular
+		float specularStrength = 1.0f;
+		vec3 viewDir = normalize(viewPos1 - FragPos);
+		vec3 reflectDir = reflect(-lightDir1, norm);  
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+		vec3 specular = scalar1 * specularStrength * spec * lightColor; 
+		
+		//specular 2
+		//float specularStrength = 1.0f;
+		vec3 viewDir2 = normalize(viewPos2 - FragPos);
+		vec3 reflectDir2 = reflect(-lightDir2, norm);  
+		float spec2 = pow(max(dot(viewDir2, reflectDir2), 0.0), 32);
+		vec3 specular2 =  scalar2*specularStrength * spec2 * lightColor; 
+		
+		//specular 3
+		//float specularStrength = 1.0f;
+		vec3 viewDir3 = normalize(viewPos3 - FragPos);
+		vec3 reflectDir3 = reflect(-lightDir3, norm);  
+		float spec3 = pow(max(dot(viewDir3, reflectDir3), 0.0), 32);
+		vec3 specular3 =  scalar3*specularStrength * spec3 * lightColor; 
+		
+		//specular 4
+		//float specularStrength = 1.0f;
+		vec3 viewDir4 = normalize(viewPos4 - FragPos);
+		vec3 reflectDir4 = reflect(-lightDir4, norm);  
+		float spec4 = pow(max(dot(viewDir4, reflectDir4), 0.0), 32);
+		vec3 specular4 =  scalar4*specularStrength * spec4 * lightColor; 
+		
+		//specular 5
+		//float specularStrength = 1.0f;
+		vec3 viewDir5 = normalize(viewPos5 - FragPos);
+		vec3 reflectDir5 = reflect(-lightDir5, norm);  
+		float spec5 = pow(max(dot(viewDir5, reflectDir5), 0.0), 32);
+		vec3 specular5 =  scalar5*specularStrength * spec5 * lightColor; 
+		
+		//specular 6
+		//float specularStrength = 1.0f;
+		vec3 viewDir6 = normalize(viewPos6 - FragPos);
+		vec3 reflectDir6 = reflect(-lightDir6, norm);  
+		float spec6 = pow(max(dot(viewDir6, reflectDir6), 0.0), 32);
+		vec3 specular6 =  scalar6*specularStrength * spec6 * lightColor; 
+		
+		
+		vec4 result = vec4((ambient+diffuse2+ diffuse3+diffuse4+diffuse5+diffuse6+specular2+specular3 +specular4 +specular5 +specular6),1.0)*textureColor;
+		FragColor = result;
+	}else if(((theta > light_cutoff) && !(theta2 > light_cutoff)) || ((theta > light_cutoff) && !(theta3 > light_cutoff)) || ((theta > light_cutoff) && !(theta4 > light_cutoff)) || ((theta > light_cutoff) && !(theta5 > light_cutoff)) || ((theta > light_cutoff) && !(theta6 > light_cutoff))){
+		//Ambient
+	    float ambientStrength = 0.25f;
+		vec3 ambient = ambientStrength * lightColor;
+			
+		//Diffuse1
+		vec3 norm = normalize(Normal);
+		float diff = max(dot(norm, lightDir1), 0.0);
+		vec3 diffuse =  scalar1 * diff * lightColor;
+			
+		//specular
+		float specularStrength = 1.0f;
+		vec3 viewDir = normalize(viewPos1 - FragPos);
+		vec3 reflectDir = reflect(-lightDir1, norm);  
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+		vec3 specular = scalar1 * specularStrength * spec * lightColor; 
+		
+		vec4 result = vec4((ambient ),1.0)*textureColor;
+		FragColor = result;
+	}
+	
+	}else{
+		
+		if( ((theta > light_cutoff) && (theta2 > light_cutoff)) || ((theta > light_cutoff) && (theta3 > light_cutoff)) || ((theta > light_cutoff) && (theta4 > light_cutoff)) || ((theta > light_cutoff) && (theta5 > light_cutoff)) || ((theta > light_cutoff) && (theta6 > light_cutoff))) 
+    {     
+        //Ambient
+	    float ambientStrength = 0.25f;
+		vec3 ambient = ambientStrength * lightColor;
+			
+		//Diffuse1
+		vec3 norm = normalize(Normal);
+		float diff = max(dot(norm, lightDir1), 0.0);
+		vec3 diffuse =  .75*scalar1 * diff * lightColor;
+			
+		//Diffuse2
+		
+		float diff2 = max(dot(norm, lightDir2), 0.0);
+		vec3 diffuse2 =  .75*scalar2*diff2 * lightColor;
+			
+		//Diffuse3
+		
+		float diff3 = max(dot(norm, lightDir3), 0.0);
+		vec3 diffuse3 =  .75*scalar3*diff3 * lightColor;
+		
+		//Diffuse4
+		
+		float diff4 = max(dot(norm, lightDir4), 0.0);
+		vec3 diffuse4 =  .75*scalar4*diff4 * lightColor;
+		
+		//Diffuse5
+		
+		float diff5 = max(dot(norm, lightDir5), 0.0);
+		vec3 diffuse5 =  .75*scalar5*diff5 * lightColor;
+		
+		//Diffuse6
+		
+		float diff6 = max(dot(norm, lightDir6), 0.0);
+		vec3 diffuse6 =  .75*scalar6*diff6 * lightColor;
+		
+		//specular
+		float specularStrength = 1.0f;
+		vec3 viewDir = normalize(viewPos1 - FragPos);
+		vec3 reflectDir = reflect(-lightDir1, norm);  
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+		vec3 specular = scalar1 * specularStrength * spec * lightColor; 
+		
+		//specular 2
+		//float specularStrength = 1.0f;
+		vec3 viewDir2 = normalize(viewPos2 - FragPos);
+		vec3 reflectDir2 = reflect(-lightDir2, norm);  
+		float spec2 = pow(max(dot(viewDir2, reflectDir2), 0.0), 32);
+		vec3 specular2 =  scalar2*specularStrength * spec2 * lightColor; 
+		
+		//specular 3
+		//float specularStrength = 1.0f;
+		vec3 viewDir3 = normalize(viewPos3 - FragPos);
+		vec3 reflectDir3 = reflect(-lightDir3, norm);  
+		float spec3 = pow(max(dot(viewDir3, reflectDir3), 0.0), 32);
+		vec3 specular3 =  scalar3*specularStrength * spec3 * lightColor; 
+		
+		//specular 4
+		//float specularStrength = 1.0f;
+		vec3 viewDir4 = normalize(viewPos4 - FragPos);
+		vec3 reflectDir4 = reflect(-lightDir4, norm);  
+		float spec4 = pow(max(dot(viewDir4, reflectDir4), 0.0), 32);
+		vec3 specular4 =  scalar4*specularStrength * spec4 * lightColor; 
+		
+		//specular 5
+		//float specularStrength = 1.0f;
+		vec3 viewDir5 = normalize(viewPos5 - FragPos);
+		vec3 reflectDir5 = reflect(-lightDir5, norm);  
+		float spec5 = pow(max(dot(viewDir5, reflectDir5), 0.0), 32);
+		vec3 specular5 =  scalar5*specularStrength * spec5 * lightColor; 
+		
+		//specular 6
+		//float specularStrength = 1.0f;
+		vec3 viewDir6 = normalize(viewPos6 - FragPos);
+		vec3 reflectDir6 = reflect(-lightDir6, norm);  
+		float spec6 = pow(max(dot(viewDir6, reflectDir6), 0.0), 32);
+		vec3 specular6 =  scalar6*specularStrength * spec6 * lightColor; 
+		
+		
+		vec4 result = vec4((ambient+diffuse+diffuse2+ diffuse3+diffuse4+diffuse5+diffuse6+specular+specular2+specular3 +specular4 +specular5 +specular6),1.0)*textureColor;
+		FragColor = result;
+	}else if(((theta > light_cutoff) && !(theta2 > light_cutoff)) || ((theta > light_cutoff) && !(theta3 > light_cutoff)) || ((theta > light_cutoff) && !(theta4 > light_cutoff)) || ((theta > light_cutoff) && !(theta5 > light_cutoff)) || ((theta > light_cutoff) && !(theta6 > light_cutoff))){
+		//Ambient
+	    float ambientStrength = 0.25f;
+		vec3 ambient = ambientStrength * lightColor;
+			
+		//Diffuse1
+		vec3 norm = normalize(Normal);
+		float diff = max(dot(norm, lightDir1), 0.0);
+		vec3 diffuse =  scalar1 * diff * lightColor;
+			
+		//specular
+		float specularStrength = 1.0f;
+		vec3 viewDir = normalize(viewPos1 - FragPos);
+		vec3 reflectDir = reflect(-lightDir1, norm);  
+		float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+		vec3 specular = scalar1 * specularStrength * spec * lightColor; 
+		
+		vec4 result = vec4((ambient +diffuse + specular),1.0)*textureColor;
+		FragColor = result;
+	}
+	
+	}
+		
+		
+		
+    }
